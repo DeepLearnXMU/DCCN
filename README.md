@@ -1,7 +1,6 @@
 # DCCN
 The code for "Dynamic Context-guided Capsule Network for Multimodal Machine Translation" in Pytorch. 
 This project is based on https://github.com/Waino/OpenNMT-py. 
-The context-guided dynamic routing algorithm is implemented in onmt/modules/CapsuleNetwork.py. 
 
 ## Installation
 ```python
