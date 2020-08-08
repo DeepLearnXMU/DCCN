@@ -68,11 +68,13 @@ class CapsuleNet(nn.Module):
             c = F.softmax(b, dim=2)
             c = c + weight
             c = c.unsqueeze(-1)
+            # generate higl-level capsules and multimodal context capsules
             outputs = (c * priors).sum(dim=2)
+            m = self.dp(m * self.W_output(outputs))
+            # update rho and b
+            weight = self.coatt(u, self.W_m(m), img_mask, text_mask, self.num_regions)
             delta_b = (weight.unsqueeze(-1) * priors * outputs.unsqueeze(2)).sum(dim=-1)
             b = b + delta_b
-            m = self.dp(m * self.W_output(outputs))
-            weight = self.coatt(u, self.W_m(m), img_mask, text_mask, self.num_regions)
 
         cxt = m.view(m.shape[0], m.shape[1], -1)
         cxt = self.fusion_layer(cxt)
