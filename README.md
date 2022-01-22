@@ -27,7 +27,7 @@ To extract regional visual features from raw images, you need to:
 4) Map the annotation vocab to MT vocab index (attribute id). If a word is splitted by BPE, it will be mapped to several subwords' index, and its prediction probability will also be divided equally. This will cause N_word bigger than original annotator vocab length (1600), so please change "1600" in onmt/modules/multimodal.py, L42 and L45 to the real N_word you obtain.  
 5) Concatenate the probability vector and attribute id vector for each region of every image, and use ``np.save()`` to save them as **train/valid/test_obj.npy**.
 
-![example](github.com/DeepLearnXMU/DCCN/blob/master/example.png)
+![example](https://github.com/DeepLearnXMU/DCCN/blob/master/example.png)
 
 For more instructions, please refer to [Installation](https://github.com/peteanderson80/bottom-up-attention#installation) and [Demo](https://github.com/peteanderson80/bottom-up-attention#demo) parts of [bottom-up-attention](https://github.com/peteanderson80/bottom-up-attention).
 
